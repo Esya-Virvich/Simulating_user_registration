@@ -1,0 +1,10 @@
+import flet as ft
+from flet_core import page
+import controller
+from model import start_page
+
+data = {"first_name": "first_name", "surname": "surname", "age": "age"}
+
+ft.app(target=start_page)
+
+print(data)
