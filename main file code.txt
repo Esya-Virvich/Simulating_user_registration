@@ -1,0 +1,5 @@
+import controller
+import model
+
+if __name__ == "__main__":
+    model.start_page()
