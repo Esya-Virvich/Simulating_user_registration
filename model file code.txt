@@ -1,0 +1,47 @@
+import flet as ft
+from flet_core import page
+import controller
+
+data = {"first_name": "first_name", "surname": "surname", "age": "age"}
+
+def start_page(page: ft.Page):
+    page.title = "Регистрация"
+    page.window_width = 430
+    page.window_height = 610
+    page.window_resizable = True
+    page.update()
+
+    first_name = ft.TextField(label="Your name", autofocus=True)
+    surname = ft.TextField(label="Your surname")
+    age = ft.TextField(label='Your age')
+    greetings = ft.Column()
+
+    def btn_click(e):
+        greetings.controls.append(ft.Text(f"Your profile:\n"
+                                          f"name: {first_name.value}\n"
+                                          f"surname: {surname.value}\n"
+                                          f"age: {age.value}"))
+        data["first_name"] = first_name.value
+        data["surname"] = surname.value
+        data["age"] = age.value
+
+        first_name.value = ""
+        surname.value = ""
+        age.value = ""
+        page.update()
+        first_name.focus()
+
+    page.add(
+        first_name,
+        surname,
+        age,
+        ft.ElevatedButton("Show my profile", on_click=btn_click),
+        greetings,
+    )
+    f1 = open('text.txt', 'w')
+    data1 = f1.write(first_name.value)
+    f1.close()
+
+    with open('text.txt', 'r') as file:
+        file_contents = file.read()
+        print(file_contents)
