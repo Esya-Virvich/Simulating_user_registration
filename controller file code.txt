@@ -1,0 +1,6 @@
+import flet as ft
+from flet_core import page
+import model
+import view
+
+data = {"first_name": "first_name", "surname": "surname", "age": "age"}
